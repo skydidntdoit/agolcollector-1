@@ -39,22 +39,10 @@
         map: map 
       });
       
-      // Create a Search widget
       const searchWidget = new Search({
-        view: view,
-          includeDefaultSources: false, // Do not include default search sources
-          sources: [{
-          locator: new esriConfig.tasks.Locator({
-            url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
-            }),
-          singleLineFieldName: "SingleLine",
-          name: "Custom Geocoding Service",
-          placeholder: "Search for an address",
-          countryCode: "USA" // Limit search to USA
-        }]
-       });
-
-    // Add the Search widget to the top right corner of the view
+        view: view
+      });
+      
       view.ui.add(searchWidget, {
         position: "top-right"
       });
