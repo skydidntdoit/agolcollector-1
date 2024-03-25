@@ -26,7 +26,7 @@
 
    <!-- loading the modules -->
    <script>
-    require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/Locate"], (esriConfig, Map, MapView, Locate) => {
+    require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/Search", "esri/widgets/Locate"], (esriConfig, Map, MapView, Search, Locate) => {
 
       esriConfig.apiKey = "AAPK0cbf13a8a7454f8296c57f2862164b9diH7u6HGTeiDBQ_Wz46twG0uphA7SLatPqHXrLUokPjGrWj7x6St3bRr-kF0HbeHE";
       
@@ -37,6 +37,26 @@
       const view = new MapView({
         container: "viewDiv",
         map: map 
+      });
+      
+      // Create a Search widget
+      const searchWidget = new Search({
+        view: view,
+          includeDefaultSources: false, // Do not include default search sources
+          sources: [{
+          locator: new esriConfig.tasks.Locator({
+            url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+            }),
+          singleLineFieldName: "SingleLine",
+          name: "Custom Geocoding Service",
+          placeholder: "Search for an address",
+          countryCode: "USA" // Limit search to USA
+        }]
+       });
+
+    // Add the Search widget to the top right corner of the view
+      view.ui.add(searchWidget, {
+        position: "top-right"
       });
 
       const locateBtn = new Locate({
