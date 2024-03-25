@@ -8,6 +8,11 @@
 
    <title>Data Collector for AGOL</title>
 
+
+   <!-- importing the css and libraries for esri.js -->
+   <link rel = "stylesheet" href = "https://js.arcgis.com/4.26/esri/themes/light/main.css" />
+   <script src = "https://js.arcgis.com/4.26/"></script>
+
    <style>
     html,
     body,
@@ -19,15 +24,10 @@
     }
    </style>
 
-   <!-- importing the css and libraries for esri.js -->
-   <link rel = "stylesheet" href = "https://js.arcgis.com/4.26/esri/themes/light/main.css" />
-   <script src = "https://js.arcgis.com/4.26/"></script>
-
    <!-- loading the modules -->
    <script>
-    require(["esri/Config", "esri/Map", "esri/views/MapView"], (esriConfig, Map, MapView) => {
+    require(["esri/config", "esri/Map", "esri/views/MapView"], (esriConfig, Map, MapView) => {
 
-      //adding in API key
       esriConfig.apiKey = "AAPK0cbf13a8a7454f8296c57f2862164b9diH7u6HGTeiDBQ_Wz46twG0uphA7SLatPqHXrLUokPjGrWj7x6St3bRr-kF0HbeHE";
       
       const map = new Map({
@@ -36,7 +36,7 @@
 
       const view = new MapView({
         container: "viewDiv",
-        map: map //refereces the map object
+        map: map 
       });
 
     });
